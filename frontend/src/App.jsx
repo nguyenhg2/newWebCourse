@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Payment from "./pages/Payment";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import LessonPlayer from "./pages/LessonPlayer";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/khoa-hoc" element={<CourseListingPage />} />
           <Route path="/khoa-hoc/:slug" element={<CourseSingle />} />
+          <Route path="/khoa-hoc/:slug/hoc/:lessonId" element={<LessonPlayer />} />
           <Route path="/blog" element={<BlogListing />} />
           <Route path="/blog/:slug" element={<BlogSingle />} />
           <Route path="/lien-he" element={<Contact />} />
