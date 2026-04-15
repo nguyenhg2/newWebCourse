@@ -26,7 +26,7 @@ app.add_middleware(
 #     logging.info(f"Response status: {response.status_code}")
 #     return response
 
-app.include_router(proxy_router, prefix="/api")
+app.include_router(proxy_router)
 
 if __name__=="__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
