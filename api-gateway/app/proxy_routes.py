@@ -43,18 +43,74 @@ async def proxy_request(service_name: str, path: str, request: Request):
         logging.error(f"Lỗi kết nối đến {service_name}: {exc}")
         raise HTTPException(status_code=503, detail=f"Dịch vụ {service_name} tạm thời không khả dụng")
 
-@router.api_route("/core/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
+
+#CORE SERVICE PROXIES
+@router.get("/core/{path:path}")
 async def core_proxy(path: str, request: Request):
     return await proxy_request("core", path, request)
 
-@router.api_route("/payment/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
+@router.post("/core/{path:path}")
+async def core_proxy(path: str, request: Request):
+    return await proxy_request("core", path, request)
+
+@router.put("/core/{path:path}")
+async def core_proxy(path: str, request: Request):
+    return await proxy_request("core", path, request)
+
+@router.delete("/core/{path:path}")
+async def core_proxy(path: str, request: Request):
+    return await proxy_request("core", path, request)
+
+
+
+#PAYMENT SERVICE PROXIES
+@router.get("/payment/{path:path}")
 async def payment_proxy(path: str, request: Request):
     return await proxy_request("payment", path, request)
 
-@router.api_route("/video/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
+@router.post("/payment/{path:path}")
+async def payment_proxy(path: str, request: Request):
+    return await proxy_request("payment", path, request)
+
+@router.put("/payment/{path:path}")
+async def payment_proxy(path: str, request: Request):
+    return await proxy_request("payment", path, request)
+
+@router.delete("/payment/{path:path}")
+async def payment_proxy(path: str, request: Request):
+    return await proxy_request("payment", path, request)
+
+
+#VIDEO SERVICE PROXIES
+@router.get("/video/{path:path}")
 async def video_proxy(path: str, request: Request):
     return await proxy_request("video", path, request)
 
-@router.api_route("/blog/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
+@router.post("/video/{path:path}")
+async def video_proxy(path: str, request: Request):
+    return await proxy_request("video", path, request)
+
+@router.put("/video/{path:path}")
+async def video_proxy(path: str, request: Request):
+    return await proxy_request("video", path, request)
+
+@router.delete("/video/{path:path}")
+async def video_proxy(path: str, request: Request):
+    return await proxy_request("video", path, request)
+
+#BLOG SERVICE PROXIES
+@router.get("/blog/{path:path}")
+async def blog_proxy(path: str, request: Request):
+    return await proxy_request("blog", path, request)
+
+@router.post("/blog/{path:path}")
+async def blog_proxy(path: str, request: Request):
+    return await proxy_request("blog", path, request)
+
+@router.put("/blog/{path:path}")
+async def blog_proxy(path: str, request: Request):
+    return await proxy_request("blog", path, request)
+
+@router.delete("/blog/{path:path}")
 async def blog_proxy(path: str, request: Request):
     return await proxy_request("blog", path, request)
