@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CourseCard from "./CourseCard";
-import Pagination from "./Pagination";
+import Pagination from "../ui/Pagination";
 import { FiSearch } from "react-icons/fi";
 
 const COURSES = [
