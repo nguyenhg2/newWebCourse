@@ -1,0 +1,36 @@
+2026-04-14 09:54:19 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:54:19 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-14 09:54:19 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-14 09:54:39 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:54:39 | INFO | main:gateway_middleware:25 | Incoming request: GET /
+2026-04-14 09:54:39 | INFO | main:gateway_middleware:27 | Response status: 404
+2026-04-14 09:54:53 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:54:53 | INFO | main:gateway_middleware:25 | Incoming request: GET /openapi.json
+2026-04-14 09:54:53 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-14 09:57:39 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:57:39 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-14 09:57:39 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-14 09:58:04 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:58:04 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-14 09:58:04 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-14 09:58:38 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-14 09:58:38 | INFO | main:gateway_middleware:25 | Incoming request: GET /openapi.json
+2026-04-14 09:58:38 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:35:15 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:35:15 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-16 00:35:15 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:35:38 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:35:38 | INFO | main:gateway_middleware:25 | Incoming request: GET /openapi.json
+2026-04-16 00:35:38 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:37:22 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:37:22 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-16 00:37:22 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:37:23 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:37:23 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-16 00:37:23 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:37:44 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:37:44 | INFO | main:gateway_middleware:25 | Incoming request: GET /docs
+2026-04-16 00:37:44 | INFO | main:gateway_middleware:27 | Response status: 200
+2026-04-16 00:38:11 | ERROR | rate_limiter:check_rate_limit:41 | Could not connect to Redis for Rate Limiting
+2026-04-16 00:38:11 | INFO | main:gateway_middleware:25 | Incoming request: GET /openapi.json
+2026-04-16 00:38:11 | INFO | main:gateway_middleware:27 | Response status: 200
