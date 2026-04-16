@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiCreditCard, FiLock } from "react-icons/fi";
-import Breadcrumb from "../components/Breadcrumb";
+import Breadcrumb from "../components/layout/Breadcrumb";
 
 const paymentMethods = [
   { id: "mastercard", label: "Mastercard", color: "bg-red-600" },
