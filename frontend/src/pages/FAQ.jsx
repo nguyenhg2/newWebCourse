@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import Breadcrumb from "../components/Breadcrumb";
+import Breadcrumb from "../components/layout/Breadcrumb";
 
 const faqData = [
   {

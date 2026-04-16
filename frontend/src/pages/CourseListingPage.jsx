@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FiSearch, FiGrid, FiList } from "react-icons/fi";
-import Breadcrumb from "../components/Breadcrumb";
-import CourseListCard from "../components/CourseListCard";
-import CourseGridCard from "../components/CourseGridCard";
-import CourseSidebar from "../components/CourseSidebar";
-import Pagination from "../components/Pagination";
+import Breadcrumb from "../components/layout/Breadcrumb";
+import CourseListCard from "../components/course/CourseListCard";
+import CourseGridCard from "../components/course/CourseGridCard";
+import CourseSidebar from "../components/course/CourseSidebar";
+import Pagination from "../components/ui/Pagination";
 
 const COURSES = [
   {

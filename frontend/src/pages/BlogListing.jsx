@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FiSearch, FiGrid, FiList } from "react-icons/fi";
-import Breadcrumb from "../components/Breadcrumb";
-import BlogListCard from "../components/BlogListCard";
-import BlogGridCard from "../components/BlogGridCard";
-import BlogSidebar from "../components/BlogSidebar";
-import Pagination from "../components/Pagination";
+import Breadcrumb from "../components/layout/Breadcrumb";
+import BlogListCard from "../components/blog/BlogListCard";
+import BlogGridCard from "../components/blog/BlogGridCard";
+import BlogSidebar from "../components/blog/BlogSidebar";
+import Pagination from "../components/ui/Pagination";
 
 const POSTS = [
   {

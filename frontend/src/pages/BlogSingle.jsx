@@ -8,10 +8,10 @@ import {
 } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb";
-import BlogSidebar from "../components/BlogSidebar";
-import CommentList from "../components/CommentList";
-import CommentForm from "../components/CommentForm";
+import Breadcrumb from "../components/layout/Breadcrumb";
+import BlogSidebar from "../components/blog/BlogSidebar";
+import CommentList from "../components/ui/CommentList";
+import CommentForm from "../components/ui/CommentForm";
 
 const TAGS = [
   "Khoa hoc mien phi",

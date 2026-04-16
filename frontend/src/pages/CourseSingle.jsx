@@ -11,9 +11,9 @@ import {
   FiLock,
 } from "react-icons/fi";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FiStar } from "react-icons/fa";
-import Breadcrumb from "../components/Breadcrumb";
-import CommentForm from "../components/CommentForm";
-import CommentList from "../components/CommentList";
+import Breadcrumb from "../components/layout/Breadcrumb";
+import CommentForm from "../components/ui/CommentForm";
+import CommentList from "../components/ui/CommentList";
 
 const TABS = ["Tong quan", "Chuong trinh", "Giang vien", "FAQs", "Danh gia"];
 
