@@ -10,8 +10,8 @@ class RegisterRequest(BaseModel):
     name: str
     email: EmailStr
     password: str
-    role: Role
-    avatar: str = None
+    role: Role = Role.student
+    avatar: Optional[str] = None
 
 class TokenResponse(BaseModel):
     access_token: str
