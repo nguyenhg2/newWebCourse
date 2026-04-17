@@ -1,42 +1,51 @@
 from fastapi import APIRouter, Depends, HTTPException
-from app.models.categories import Categories
+from sqlalchemy.orm import Session
+from app.models.categories import Categories, CategoryResponse
 from app.core.deps import require_role
-from app.db.mongo import get_db
+from app.db.database import get_db, Category
 
 router=APIRouter()
 
-@router.get("/api/categories")
-async def categories(db=Depends(get_db)):
-    categories = await db["categories"].distinct("name")
-    return categories
+@router.get("/api/categories", response_model=list[CategoryResponse])
+async def categories(db: Session = Depends(get_db)):
+    category_list = db.query(Category).all()
+    return category_list
 
-@router.post("/api/categories")
-async def create_category(payload: Categories, db=Depends(get_db),user=Depends(require_role("admin"))):
-    existing = await db["categories"].find_one({"name": payload.name})
+@router.post("/api/categories", response_model=CategoryResponse)
+async def create_category(payload: Categories, db: Session = Depends(get_db), user=Depends(require_role("admin"))):
+    existing = db.query(Category).filter(Category.name == payload.name).first()
     if existing:
         raise HTTPException(status_code=400, detail="Danh mục này đã tồn tại")
-    category_doc = {
-        "name": payload.name,
-        "icon": payload.icon or None
-    }
-    await db["categories"].insert_one(category_doc)
-    return {"message": "Danh mục đã được tạo"}
+    category_doc = Category(
+        name=payload.name,
+        icon=payload.icon or None
+    )
+    db.add(category_doc)
+    db.commit()
+    db.refresh(category_doc)
+    return category_doc
 
-@router.put("/api/categories/{category_id}")
-async def update_category(category_id: str, payload: Categories, db=Depends(get_db), user=Depends(require_role("admin"))):
-    existing = await db["categories"].find_one({"_id": category_id})
+@router.put("/api/categories/{category_id}", response_model=CategoryResponse)
+async def update_category(category_id: int, payload: Categories, db: Session = Depends(get_db), user=Depends(require_role("admin"))):
+    existing = db.query(Category).filter(Category.id == category_id).first()
     if not existing:
         raise HTTPException(status_code=404, detail="Danh mục không tồn tại")
 
     update_data = payload.model_dump(exclude_unset=True)
     update_data["icon"] = update_data.get("icon") or None
 
-    await db["categories"].update_one({"_id": category_id}, {"$set": update_data})
-    return {"message": "Danh mục đã được cập nhật"}
+    for key, value in update_data.items():
+        setattr(existing, key, value)
+
+    db.commit()
+    db.refresh(existing)
+    return existing
 
 @router.delete("/api/categories/{category_id}")
-async def delete_category(category_id: str, db=Depends(get_db), user=Depends(require_role("admin"))):
-    result = await db["categories"].delete_one({"_id": category_id})
-    if result.deleted_count == 0:
+async def delete_category(category_id: int, db: Session = Depends(get_db), user=Depends(require_role("admin"))):
+    category = db.query(Category).filter(Category.id == category_id).first()
+    if not category:
         raise HTTPException(status_code=404, detail="Danh mục không tồn tại")
+    db.delete(category)
+    db.commit()
     return {"message": "Danh mục đã được xóa"}

@@ -1,9 +1,10 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import JWTError, jwt
+from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.db.mongo import get_db, oid, serialize_doc
+from app.db.database import User, get_db
 
 security = HTTPBearer()
 
@@ -15,19 +16,23 @@ def decode_token(token: str) -> dict:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token") from exc
 
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> dict:
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security), db: Session = Depends(get_db)) -> dict:
     token = credentials.credentials
     payload = decode_token(token)
     user_id = payload.get("user_id")
     if not user_id:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token payload")
-    db = get_db()
-    user = await db.users.find_one({"_id": oid(user_id)})
+    user = db.query(User).filter(User.id == user_id).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
-    user = serialize_doc(user)
-    user.pop("passwordHash", None)
-    return user
+    user_data = {
+        "id": user.id,
+        "name": user.name,
+        "email": user.email,
+        "role": user.role.value if hasattr(user.role, 'value') else user.role,
+        "avatar": user.avatar
+    }
+    return user_data
 
 
 def require_role(*roles: str):

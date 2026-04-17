@@ -7,7 +7,7 @@ class CourseBase(BaseModel):
     description: str
     thumbnail: Optional[str] = None
     price: float = 0.0
-    category_id: str
+    category_id: int
     level: Level
     rating: float = 0.0
 
@@ -19,11 +19,11 @@ class CourseUpdate(BaseModel):
     description: Optional[str] = None
     thumbnail: Optional[str] = None
     price: Optional[float] = None
-    category_id: Optional[str] = None
+    category_id: Optional[int] = None
     level: Optional[Level] = None
     
 class CourseResponse(CourseBase):
-    id: str = Field(..., alias="_id")
+    id: int
 
     class Config:
-        populate_by_name = True
+        from_attributes = True

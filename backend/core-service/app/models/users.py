@@ -23,3 +23,13 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
     password: Optional[str] = None
     avatar: Optional[str] = None
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: str
+    role: str
+    avatar: Optional[str] = None
+
+    class Config:
+        from_attributes = True
