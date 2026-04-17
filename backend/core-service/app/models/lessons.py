@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Lesson(BaseModel):
-    section_id: str
-    course_id: str
+    section_id: int
+    course_id: int
     title: str
     video_url: str
     duration: int
@@ -14,3 +14,9 @@ class UpdateLesson(BaseModel):
     video_url: Optional[str] = None
     duration: Optional[int] = None
     is_free_preview: Optional[bool] = None
+
+class LessonResponse(Lesson):
+    id: int
+
+    class Config:
+        from_attributes = True

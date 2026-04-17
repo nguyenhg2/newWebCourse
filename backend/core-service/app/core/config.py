@@ -3,8 +3,7 @@ from pydantic import Field
 
 
 class Settings(BaseSettings):
-    mongo_url: str = Field(default="mongodb://localhost:27017", alias="MONGODB_URI")
-    mongo_db: str = Field(default="webcourse", alias="MONGODB_DB")
+    sqlserver_connection_string: str = Field(default="Data Source=localhost\\SQLEXPRESS;Initial Catalog=BaseCoreSales;Integrated Security=True;Encrypt=True;Trust Server Certificate=True", alias="SQLSERVER_CONNECTION_STRING")
     jwt_secret: str = Field(default="dev-secret", alias="JWT_SECRET")
     jwt_algorithm: str = Field(default="HS256", alias="JWT_ALGORITHM")
     access_token_expire_minutes: int = Field(default=60 * 12, alias="ACCESS_TOKEN_EXPIRE_MINUTES")
